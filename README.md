@@ -1,20 +1,26 @@
-# Example SSE Angular 2 Application
+# Example SSE Angular and Node Apps with Bazel
 
-This project uses [angular-cli](https://github.com/angular/angular-cli).
+This project uses [bazel](https://bazel.build/) and
+[angular-cli](https://github.com/angular/angular-cli).
 
 Its purpose is to demonstrate techniques for working with streaming data flow in
-a Angular 2 application. Its data comes from a server which generates fake
-foreign currency exchange data. You can get that server code from:
-
-<https://github.com/OasisDigital/sse-example-server>
+an Angular application. Its data comes from a server which generates fake
+foreign currency exchange data. This project is a Bazel monorepo that contains
+both the Angular client and the Node server.
 
 ## Running
 
-First go also clone and run the example server linked above. Then:
+First start the server in one terminal:
 
 ```
-npm install
-npm start
+yarn
+yarn start:server
+```
+
+Then, in a new terminal, start the client:
+
+```
+yarn start:client
 ```
 
 <http://localhost:4200/>
