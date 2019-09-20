@@ -88,3 +88,28 @@ ts_setup_workspace()
 
 load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 sass_repositories()
+
+# Java projects:
+
+RULES_JVM_EXTERNAL_TAG = "2.5"
+RULES_JVM_EXTERNAL_SHA = "249e8129914be6d987ca57754516be35a14ea866c616041ff0cd32ea94d2f3a1"
+
+http_archive(
+    name = "rules_jvm_external",
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
+    sha256 = RULES_JVM_EXTERNAL_SHA,
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+)
+
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+
+maven_install(
+    artifacts = [
+        "com.sparkjava:spark-core:2.8.0",
+    ],
+    repositories = [
+        "http://uk.maven.org/maven2",
+        "https://jcenter.bintray.com/",
+    ],
+    fetch_sources = True,
+)
